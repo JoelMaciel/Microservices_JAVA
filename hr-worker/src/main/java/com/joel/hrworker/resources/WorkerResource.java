@@ -1,5 +1,4 @@
 package com.joel.hrworker.resources;
-
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.joel.hrworker.entities.Worker;
 import com.joel.hrworker.repositories.WorkerRepository;
 
+
+
 @RefreshScope
 @RestController
 @RequestMapping(value = "/workers")
@@ -26,7 +27,7 @@ public class WorkerResource {
 	
 	@Value("${test.config}")
 	private String testConfig;
-
+	
 	@Autowired
 	private Environment env;
 	
@@ -34,18 +35,16 @@ public class WorkerResource {
 	private WorkerRepository repository;
 	
 	@GetMapping(value = "/configs")
-	public ResponseEntity<Void> getConfigs(){
+	public ResponseEntity<Void> getConfigs() {
 		logger.info("CONFIG = " + testConfig);
 		return ResponseEntity.noContent().build();
-	}
-
+	}		
+	
 	@GetMapping
 	public ResponseEntity<List<Worker>> findAll() {
 		List<Worker> list = repository.findAll();
-
 		return ResponseEntity.ok(list);
-
-	}
+	}	
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Worker> findById(@PathVariable Long id) {
@@ -53,7 +52,6 @@ public class WorkerResource {
 		try {
 			Thread.sleep(3000L);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -61,8 +59,5 @@ public class WorkerResource {
 		
 		Worker obj = repository.findById(id).get();
 		return ResponseEntity.ok(obj);
-	}
-	
-	
-
+	}	
 }

@@ -10,9 +10,8 @@ import com.joel.hroauth.entities.User;
 
 @Component
 @FeignClient(name = "hr-user", path = "/users")
-public interface UserFeingClient {
-	
-	@GetMapping(value = "/search")
-	ResponseEntity<User> findByEmail(@RequestParam String email);
+public interface UserFeignClient {
 
+	@GetMapping(value = "/search")
+	ResponseEntity<User> findByEmail(@RequestParam String email);	
 }

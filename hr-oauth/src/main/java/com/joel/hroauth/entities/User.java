@@ -16,7 +16,6 @@ public class User implements UserDetails, Serializable {
 
 	private Long id;
 	private String name;
-
 	private String email;
 	private String password;
 
@@ -115,8 +114,6 @@ public class User implements UserDetails, Serializable {
 
 	@Override
 	public boolean isEnabled() {
-		
 		return true;
 	}
-
 }
